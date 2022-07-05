@@ -22,11 +22,6 @@ var app = express()
 // Process root folder
 process.env.PWD = process.cwd()
 
-console.log(process.env.PWD);
-
-// Static folders setup
-app.use(express.static('uploads'));
-
 // Mongo Setup
 var mongoUrl = require('./config/mongo')
 
@@ -54,6 +49,9 @@ app.use('/user', usersRouter)
 app.use('/application', applicationRouter)
 app.use('/community', communityRouter)
 app.use('/skill', skillRouter)
+
+// Static folders setup
+app.use('/uploads', express.static(path.join(process.env.PWD, 'uploads')))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
