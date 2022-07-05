@@ -23,7 +23,7 @@ var app = express()
 process.env.PWD = process.cwd()
 
 // Statuc folders setup
-app.use('/uploads', express.static(path.join(process.env.PWD, './uploads')))
+app.use('/uploads', express.static(path.join(process.env.PWD, 'uploads')))
 
 // Mongo Setup
 var mongoUrl = require('./config/mongo')
