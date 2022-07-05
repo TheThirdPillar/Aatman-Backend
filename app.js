@@ -25,7 +25,7 @@ process.env.PWD = process.cwd()
 console.log(process.env.PWD);
 
 // Static folders setup
-app.use(express.static(path.join(process.env.PWD, 'uploads')));
+app.use(express.static('uploads'));
 
 // Mongo Setup
 var mongoUrl = require('./config/mongo')
