@@ -897,6 +897,23 @@ module.exports = (() => {
                             return callback(response)
                         }
                     })
+                } else if (object === 'community') {
+                    UserCommunity.deleteOne({ _id: objectId })
+                    .exec((error) => {
+                        if (error) {
+                            let response = {
+                                status: 'FAILED',
+                                errors: error
+                            }
+                            return callback(response)
+                        } else {
+                            let response = {
+                                status: 'SUCCESS',
+                                message: 'Successfully removed the community'
+                            }
+                            return callback(response)
+                        }
+                    })
                 } else {
                     let response = {
                         status: 'FAILED',
