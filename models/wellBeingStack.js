@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var WellBeingStackSchema = new Schema({
-    stackName: {type: String, required: true, enum: ['physiology', 'energy', 'feeling', 'thinking', 'behavior', 'result']},
+    stackName: {type: String, required: true, enum: ['physiology', 'emotions', 'feelings', 'thoughts', 'habits', 'performance']},
     // TODO: This should be MAP and not object.
     stackRatings: {type: Object, required: true},
     lastUpdated: {type: Date},
