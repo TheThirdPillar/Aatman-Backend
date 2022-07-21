@@ -859,13 +859,50 @@ module.exports = (() => {
             // deleting objects directly does not work, we have 
             // to remove their preferences too.
             try {
+
                 let object = formData.object
                 let objectId = formData.objectId
-                let response = {
-                    status: "SUCCESS",
-                    message: 'Successfully deleted the item.'
+
+                if (object === 'skill') {
+                    UserSkillData.deleteOne({ _id: objectId })
+                    .exec((error) => {
+                        if (error) {
+                            let response = {
+                                status: 'FAILED',
+                                errors: error
+                            }
+                            return callback(response)
+                        } else {
+                            let response = {
+                                status: "SUCCESS",
+                                message: 'Successfully deleted the item.'
+                            }
+                            return callback(response)
+                        }
+                    })
+                } else if (object === 'record') {
+                    Record.deleteOne({ _id: objectId })
+                    .exec((error) => {
+                        if (error) {
+                            let response = {
+                                status: 'FAILED',
+                                errors: error
+                            }
+                            return callback(response)
+                        } else {
+                            let response = {
+                                status: 'SUCCESS',
+                                message: 'Successfully deleted the record.'
+                            }
+                            return callback(response)
+                        }
+                    })
+                } else {
+                    let response = {
+                        status: 'FAILED',
+                        message: 'Object not supported yet.'
+                    }
                 }
-                return callback(response)
             } catch (error) {
                 let response = {
                     status: 'FAILED',

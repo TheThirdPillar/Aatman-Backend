@@ -387,6 +387,7 @@ exports.applicationDeleter = (req, res) => {
     try {
         let user = req.user
         let object = req.params['object']
+        let formData = req.body
         if (req.params['appId'] === 'identity') {
             if (req.params['functionName'] === 'deleteItem') {
                 identity.deleteItem(formData, (response) => {
