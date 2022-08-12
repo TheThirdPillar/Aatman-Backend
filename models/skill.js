@@ -7,6 +7,7 @@ var SkillSchema = new Schema({
     proofOfWork: { type: String, required: true, default: "" },
     personalEndorsement: { type: String, required: true, default: "" },
     skillLevel: { type: Number, default: 0},
+    hourlyRate: { type: Number, default: 0},
 })
 
 module.exports = mongoose.model('Skill', SkillSchema)
